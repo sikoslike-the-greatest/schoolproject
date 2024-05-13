@@ -1,0 +1,243 @@
+# ❯ curl http://127.0.0.1:56789/api/products\?category\=sneakers\&page\=1\&perPage\=40\&sort\=by-relevance\&size\=43\&brands\=Jordan > example.txt
+[
+    {
+        "name": "Jordan Air Jordan 1 Light Smoke Grey \" Dior",
+        "price": 18278,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230920/0db8e3ed222b476aa975f32e8938fe30.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-light-smoke-grey-dior-1142453?sku=600986259"
+    },
+    {
+        "name": "Jordan Courtside 23",
+        "price": 9181,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230920/c52ec202a4cc4fab8a30249abb9b23f2.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-courtside-23-1449177?sku=602814213"
+    },
+    {
+        "name": "Jordan Air Jordan 1 mid se \"diamond shorts\"",
+        "price": 14298,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230920/889fb485dc144ff6b68142370b87c437.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-mid-se-diamond-shorts-2194618?sku=607822703"
+    },
+    {
+        "name": "Jordan Air Jordan 1 High OG \"University Blue\"",
+        "price": 17851,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230920/387d9b78580c416ba44faaad88368eb3.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-high-og-university-blue-3683513?sku=616810408"
+    },
+    {
+        "name": "Jordan Air Jordan 1 stealth and white dior",
+        "price": 11028,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230920/78af8f4200fa4feeb89ce3e9c129102d.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-stealth-and-white-dior-2774162?sku=611086439"
+    },
+    {
+        "name": "Jordan Air Jordan 4 retro se \"amethyst wave\"",
+        "price": 23679,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/991ef04f0bae4304a2c464d3d5167b46.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-4-retro-se-amethyst-wave-1855216?sku=605434270"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Retro High Prem Mushroom Fossil",
+        "price": 58361,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/d9802ce7319240d7a4d728c3bac11774.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-retro-high-prem-mushroom-fossil-40692?sku=244146618"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Low OG \"Black Elephant\"",
+        "price": 12165,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/77224b4465644454a10a57db72c08d20.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-og-black-elephant-3307550?sku=614512798"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Mid 'Light Smoke Grey' 'Dior'",
+        "price": 12592,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/142ec1f39cff49628fbef7a5dcea179e.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-mid-light-smoke-grey-dior-66479?sku=398868618"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Low SE",
+        "price": 14298,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/8d1b6e672b164f7192104f73168348e1.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-se-5414152?sku=626924315"
+    },
+    {
+        "name": "A Ma Manire x Jordan Air Jordan 1 retro high og sp \"sail and burgundy\"",
+        "price": 33344,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/602b865d9aa6412fb774d9bfd9a1da44.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/a-ma-maniere-x-jordan-air-jordan-1-retro-high-og-sp-sail-and-burgundy-2087481?sku=607150646"
+    },
+    {
+        "name": "Jordan Luka 2 \"Bred\" PF",
+        "price": 9607,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/251c038c9c514db4b785dfe0708846e0.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-luka-2-bred-pf-6621011?sku=635509523"
+    },
+    {
+        "name": "Jordan Air Jordan 1 low \"wolf grey\" dior",
+        "price": 15292,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/7bf63091e32048f78390de44163d0216.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-wolf-grey-dior-1591929?sku=603699999"
+    },
+    {
+        "name": "Jordan Air Jordan 1 low \"whitetan\"",
+        "price": 24389,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20240412/8cac63489b324e8292ff9cf38a37f1a2.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-whitetan-1611250?sku=603820280"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Low \"World Make Japan\"",
+        "price": 12876,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/6161f723c1264c8999943f19b23790ba.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-world-make-japan-5581092?sku=628089441"
+    },
+    {
+        "name": "Jordan Stadium 90",
+        "price": 9749,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20240412/b4c6ce41655743b89e1b5009ea830658.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-stadium-90-7705521?sku=644130550"
+    },
+    {
+        "name": "Jordan Air Jordan 1 cyber green",
+        "price": 21405,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230725/c006cf27c11d469f9fcd1987076a954e.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-cyber-green-75361?sku=452160618"
+    },
+    {
+        "name": "Jordan Air Jordan 7 Retro Nothing But Net",
+        "price": 44005,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20240413/8ef9bbb246e34832a42fdb31005196fa.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-7-retro-nothing-but-net-1041?sku=6240618"
+    },
+    {
+        "name": "Jordan Air Jordan 4 retro se \"black canvas\"",
+        "price": 40025,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230725/62df7e10c66b489fa83945b0cb55e10e.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-4-retro-se-black-canvas-2731514?sku=610780661"
+    },
+    {
+        "name": "Jordan Air Jordan 1 High OG \"Mauve\"",
+        "price": 12165,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20240413/4d2d792b89444b5499319549f137b5d8.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-high-og-mauve-4029304?sku=618699430"
+    },
+    {
+        "name": "Jordan One Take 1 westbrook",
+        "price": 7901,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20240413/bd5ac384ab7e48d3ab46fda316db8725.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-one-take-1-westbrook-1034748?sku=600218351"
+    },
+    {
+        "name": "Jordan MVP \"Cardinal\"",
+        "price": 16288,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20240415/c7930d8fc0ea4899994dcf3595376c4c.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-mvp-cardinal-4778500?sku=623371646"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Low Retro Ember Glow",
+        "price": 16145,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20240415/89bba3031a73435e94e4db9d8fad0a66.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-retro-ember-glow-22134?sku=132798618"
+    },
+    {
+        "name": "Jordan Air Jordan 1 low se \"tropical twist\"",
+        "price": 20125,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/95bc996c486c4352acb0924a3371c7d3.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-se-tropical-twist-1314105?sku=602045221"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Mid Obsidian",
+        "price": 15719,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/e58e7d844bc04a81be06f823be19bff3.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-mid-obsidian-36041?sku=216240618"
+    },
+    {
+        "name": "Jordan Nu Retro 1 Low \"Palomino\"",
+        "price": 9749,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20240415/869fb21b23bb491aaaa6addb156afa9f.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-nu-retro-1-low-palomino-4449831?sku=621274624"
+    },
+    {
+        "name": "Jordan Stadium 90",
+        "price": 15577,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/a21aa31c60b54ceeb524fd23d8067639.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-stadium-90-4196130?sku=619644646"
+    },
+    {
+        "name": "Jordan Luka 2",
+        "price": 12023,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/3bb827e14a7a4b3c8caf57885461ab1d.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-luka-2-4450205?sku=621279687"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Mid \"Light Smoke Grey\"",
+        "price": 13018,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/55e7e4085d3843f081f1d1dcd86f67f6.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-mid-light-smoke-grey-2009718?sku=606516087"
+    },
+    {
+        "name": "Jordan Air Jordan 1 low se washed denim",
+        "price": 12023,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/5909213bc1b04ede9a6a32eb14ae342d.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-se-washed-denim-1041378?sku=600267302"
+    },
+    {
+        "name": "Jordan Air Jordan 1 retro high og \"heritage\"",
+        "price": 15008,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/d2a9b3bea6be4d00a9e3ed00f36aa773.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-retro-high-og-heritage-2240707?sku=608071839"
+    },
+    {
+        "name": "Trophy Room x Jordan Air Jordan 1 Low OG Away",
+        "price": 41162,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/9dc7a53da1f84d24bd562a5b5a8f5f1c.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/trophy-room-x-jordan-air-jordan-1-low-og-away-7635299?sku=643509355"
+    },
+    {
+        "name": "Jordan Air Jordan 1 low se \"homage\"",
+        "price": 16998,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/d744805de5fe4055bced96422802a0fd.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-se-homage-2689883?sku=610508533"
+    },
+    {
+        "name": "Jordan Air Jordan 1 mid \"alternate bred\"",
+        "price": 14155,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/895ec32bd0b84cac951287ec666be4b9.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-mid-alternate-bred-3232626?sku=614000520"
+    },
+    {
+        "name": "OFF-WHITE x Jordan Air Jordan 1 Retro High OG \"UNC\"",
+        "price": 178937,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/1b650d40a12f4c92a99d27498c962a37.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/off-white-x-jordan-air-jordan-1-retro-high-og-unc-10904?sku=65418618"
+    },
+    {
+        "name": "Jordan Stadium 90 \"White Green\"",
+        "price": 11171,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/1a7c99dc385f4683a01dca164c13fd85.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-stadium-90-white-green-4543535?sku=621907005"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Mid SE 2023",
+        "price": 12876,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/863a2b3c485847b693482677d6b0c9f7.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-mid-se-2023-7022791?sku=638525262"
+    },
+    {
+        "name": "Jordan Air Jordan 1 retro high og \"white royal\"",
+        "price": 23679,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/95ccbcad7c454820b277f1e68c9dbec5.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-retro-high-og-white-royal-68983?sku=413892618"
+    },
+    {
+        "name": "Jordan Air Jordan 1",
+        "price": 10459,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/28bfbd6c979c42308e65e97dda1a4dd5.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-5171628?sku=625583056"
+    },
+    {
+        "name": "Jordan Air Jordan 1 Low",
+        "price": 12165,
+        "image_url": "https://image.unicorngo.ru/_next/image?url=https://cdn.poizon.com/pro-img/origin-img/20230528/2844828af8ae483ba02e2877b479b5a9.jpg&w=640&q=75",
+        "link": "https://poizonshopru/product/jordan-air-jordan-1-low-7840898?sku=645309266"
+    }
+]

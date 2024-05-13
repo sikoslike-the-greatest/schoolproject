@@ -61,7 +61,7 @@ def get_products():
         products_json = json.dumps(products, ensure_ascii=False, indent=4)
 
         # Возвращаем JSON-ответ
-        return jsonify({'products': products}), 200
+        return products_json, 200
     else:
         # Возвращаем сообщение об ошибке
         return jsonify({'error': 'Failed to fetch data'}), 500

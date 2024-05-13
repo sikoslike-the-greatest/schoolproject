@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<body>
+    <header>
+        {% if not current_user.is_authenticated %}
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+            </ul>
+        </nav>
+        {% else %}
+        <p>Welcome, {{ current_user.get_id() }}!</p>
+        <form action="{{ url_for('logout') }}" method="get">
+            <button type="submit">Logout</button>
+        </form>
+        {% endif %}
+    </header>
+
+    <main>
+        <!-- Your main content here -->
+    </main>
+</body>
+</html>
