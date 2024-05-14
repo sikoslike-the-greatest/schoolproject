@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
     <title>Homepage</title>
 </head>
 <body>
@@ -23,7 +24,18 @@
     </header>
 
     <main>
-        <!-- Your main content here -->
+        <h1>Products</h1>
+        <div class="products">
+            {% for product in products %}
+            <div class="product">
+                <a href="{{ product.link }}">
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                </a>
+                <h2>{{ product.name }}</h2>
+                <p>Price: {{ product.price }}RUB</p>
+            </div>
+            {% endfor %}
+        </div>
     </main>
 </body>
 </html>

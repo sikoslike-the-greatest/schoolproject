@@ -2,9 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 import sqlite3
 import hashlib
+import requests
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'your_secret_key'
+# Указываем директорию, в которой находятся статические файлы (CSS, JavaScript и т. д.)
+app.static_folder = 'templates/css'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -45,7 +48,14 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # Получаем данные из API
+    api_url = 'http://127.0.0.1:56789/api/products'
+    response = requests.get(api_url)
+    if response.status_code == 200:
+        products = response.json()  # Преобразуем JSON-ответ в объект Python
+        return render_template('index.html', products=products)
+    else:
+        return 'Failed to load products from API'
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
