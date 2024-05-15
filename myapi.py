@@ -10,7 +10,6 @@ app = Flask(__name__)
 @app.route('/api/products', methods=['GET'])
 def get_products():
     # Получаем значения параметров из запроса
-    category = request.args.get('category', default='sneakers')
     page = request.args.get('page', default=1, type=int)
     perPage = request.args.get('per', default=40, type=int)
     sort = request.args.get('sort', default='by-relevance')
@@ -18,7 +17,7 @@ def get_products():
     brands = request.args.get('brands', default='')
 
     # URL сайта, который ты хочешь спарсить
-    url = f'https://poizonshop.ru/{category}?page={page}&perPage={perPage}&sort={sort}{f"&brands={brands}" if brands else ""}{f"&sizeType=EU&sizeValue={sizeValue}" if sizeValue else ""}'
+    url = f'https://poizonshop.ru/sneakers?page={page}&perPage={perPage}&sort={sort}{f"&brands={brands}" if brands else ""}{f"&sizeType=EU&sizeValue={sizeValue}" if sizeValue else ""}'
 
     # Отправляем GET-запрос к указанному URL
     response = requests.get(url)

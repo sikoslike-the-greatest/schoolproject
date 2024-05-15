@@ -48,8 +48,13 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
+    # Получаем значения параметров из запроса
+    page = request.args.get('page', default=1, type=int)
+    sort = request.args.get('sort', default='by-relevance')
+    sizeValue = request.args.get('size', default='')
+    brands = request.args.get('brands', default='')
     # Получаем данные из API
-    api_url = 'http://127.0.0.1:56789/api/products'
+    api_url = f'http://127.0.0.1:56789/api/products?size={sizeValue}&brands={brands}&sort={sort}&page={page}'
     response = requests.get(api_url)
     if response.status_code == 200:
         products = response.json()  # Преобразуем JSON-ответ в объект Python

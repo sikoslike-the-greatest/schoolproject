@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
     <title>Homepage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
     <header>
@@ -23,19 +23,133 @@
         {% endif %}
     </header>
 
-    <main>
-        <h1>Products</h1>
-        <div class="products">
-            {% for product in products %}
-            <div class="product">
-                <a href="{{ product.link }}">
-                    <img src="{{ product.image_url }}" alt="{{ product.name }}">
-                </a>
-                <h2>{{ product.name }}</h2>
-                <p>Price: {{ product.price }}RUB</p>
+    <div class="container">
+        <div class="filters">
+            <div class="filter" id="size-filter">
+                <h3>Size:</h3>
+                <select name="size" onchange="applyFilter('size', this.value)">
+                    <option value="">All</option>
+                    <option value="43" {% if '43' in request.args.getlist('size') %} selected {% endif %}>43</option>
+                    <option value="44" {% if '44' in request.args.getlist('size') %} selected {% endif %}>44</option>
+                    <!-- Добавьте другие размеры -->
+                </select>
             </div>
-            {% endfor %}
+            <div class="filter" id="brand-filter">
+                <h3>Brand:</h3>
+                <select name="brands" onchange="applyFilter('brands', this.value)">
+                    <option value="">All</option>
+                    <option value="Nike" {% if 'Nike' in request.args.getlist('brands') %} selected {% endif %}>Nike</option>
+                    <option value="Jordan" {% if 'Jordan' in request.args.getlist('brands') %} selected {% endif %}>Jordan</option>
+                    <!-- Добавьте другие бренды -->
+                </select>
+            </div>
+            <div class="filter" id="sort-filter">
+                <h3>Sort by:</h3>
+                <select name="sort" onchange="applyFilter('sort', this.value)">
+                    <option value="by-relevance" {% if 'by-relevance' in request.args.getlist('sort') %} selected {% endif %}>by-relevance</option>
+                    <option value="cheap-first" {% if 'cheap-first' in request.args.getlist('sort') %} selected {% endif %}>cheap-first</option>
+                    <option value="expensive-first" {% if 'expensive-first' in request.args.getlist('sort') %} selected {% endif %}>expensive-first</option>
+                </select>
+            </div>
         </div>
-    </main>
+        <main>
+            <h1>Products</h1>
+            <div class="products">
+                {% for product in products %}
+                <div class="product">
+                    <a href="{{ product.link }}">
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                    </a>
+                    <h2>{{ product.name }}</h2>
+                    <p>Price: {{ product.price }}RUB</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="pagination">
+                <button onclick="goToPreviousPage()"><</button>
+                <button onclick="goToFirstPage()">1</button>
+                <span id="currentPage">1</span> <!-- Здесь будет отображаться номер текущей страницы -->
+                <button onclick="goToNextPage()">></button>
+            </div>            
+        </main>
+    </div>
+
+    <script>
+        function applyFilter(filterType, filterValue) {
+            var filters = {};
+            var sizeFilters = document.querySelectorAll('select[name="size"]');
+            var brandFilters = document.querySelectorAll('select[name="brands"]');
+            var sortFilters = document.querySelectorAll('select[name="sort"]');
+            
+            sizeFilters.forEach(function(filter) {
+                filters['size'] = filter.value;
+            });
+            brandFilters.forEach(function(filter) {
+                filters['brands'] = filter.value;
+            });
+            sortFilters.forEach(function(filter) {
+                filters['sort'] = filter.value;
+            });
+
+            var queryString = '';
+            Object.keys(filters).forEach(function(key) {
+                if (filters[key]) {
+                    queryString += `${key}=${filters[key]}&`;
+                }
+            });
+
+            queryString += 'page=1'; // Устанавливаем страницу на первую при применении нового фильтра
+
+            window.location.href = `/?${queryString}`;
+        }
+
+        // Функция для получения значения параметра из URL
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Функция для переключения страницы назад
+        function goToPreviousPage() {
+            var currentPage = parseInt(getParameterByName('page')) || 1;
+            if (currentPage > 1) {
+                var newPage = currentPage - 1;
+                applyPage(newPage);
+            }
+        }
+
+        // Функция для переключения страницы вперед
+        function goToNextPage() {
+            var currentPage = parseInt(getParameterByName('page')) || 1;
+            var newPage = currentPage + 1;
+            applyPage(newPage);
+        }
+
+        // Функция для применения новой страницы и обновления URL
+        function applyPage(pageNumber) {
+            var url = new URL(window.location.href);
+            url.searchParams.set('page', pageNumber);
+            window.location.href = url.href;
+        }
+        // Функция для перехода на первую страницу
+        function goToFirstPage() {
+            applyPage(1);
+        }
+        // Получение значения параметра "page" из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = parseInt(urlParams.get('page')) || 1; // Если параметр не указан, устанавливаем текущую страницу в 1
+
+        function updateCurrentPage(pageNumber) {
+            document.getElementById('currentPage').textContent = pageNumber;
+        }
+        // Обновление текущей страницы при загрузке страницы
+        window.onload = function() {
+            updateCurrentPage(currentPage);
+        };
+    </script>
 </body>
 </html>
