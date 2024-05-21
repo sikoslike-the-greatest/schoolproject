@@ -53,7 +53,7 @@ def get_products():
 
             # Находим первый тег img внутри текущего image_div
             product_image_url = image_div.find('img')['src']
-            product_link = 'https://poizonshop.ru'+link_tag['href']
+            product_link = link_tag['href']
             products.append({'name': product_name, 'price': price_value,
                             'image_url': product_image_url, 'link': product_link})
 
@@ -66,6 +66,59 @@ def get_products():
         # Возвращаем сообщение об ошибке
         return jsonify({'error': 'Failed to fetch data'}), 500
 
+@app.route('/api/product/<path:product_name>', methods=['GET'])
+def scrape_poizonshop(product_name):
+    sku = request.args.get('sku')
+    if sku:
+        product_path = f"{product_name}?sku={sku}"
+    else:
+        product_path = product_name
+    
+    url = f"https://poizonshop.ru/product/{product_path}"
+    response = requests.get(url)
+    
+    if response.status_code != 200:
+        return jsonify({"error": "Unable to fetch the page", "status_code": response.status_code}), response.status_code
+    
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Fetch product images
+    image_elements = soup.select('div.product-images_image__2fOCS img')
+    if image_elements:
+        images = [img['src'] for img in image_elements]
+    else:
+        images = []
+    
+    # Fetch product name
+    product_name_element = soup.find('h1')
+    if product_name_element:
+        product_name = product_name_element.text.strip()
+    else:
+        product_name = "Название продукта не найдено"
+    
+    # Fetch properties (sizes)
+    properties = {}
+    property_items = soup.find_all('a', class_='property-item_item__fVuvj')
+    if property_items:
+        properties = {item.text.strip(): item['href'].split('=')[-1] for item in property_items}
+
+    
+    # Fetch price with discount
+    price_element = soup.find('span', class_='product-delivery_with_discount__gxAge')
+    if price_element:
+        price = price_element.text.strip()
+        price = round(float(price.replace(' ', '').replace('₽', '').replace(',', '').replace('\xa0', '')) * 0.92) # применяем скидку 8% и округляем до двух знаков после запятой
+    else:
+        price = "Цена не найдена"
+    
+    product_data = {
+        "images": images,
+        "product_name": product_name,
+        "properties": properties,
+        "price": price
+    }
+    return jsonify(product_data)
+    
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=56789)

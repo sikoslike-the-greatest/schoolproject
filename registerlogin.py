@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 import sqlite3
 import hashlib
@@ -6,13 +6,11 @@ import requests
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'your_secret_key'
-# Указываем директорию, в которой находятся статические файлы (CSS, JavaScript и т. д.)
 app.static_folder = 'templates/css'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-# Функция для создания таблицы пользователей
 def create_users_table():
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
@@ -27,7 +25,6 @@ def create_users_table():
     conn.commit()
     conn.close()
 
-# Создание таблицы пользователей при запуске приложения
 create_users_table()
 
 class User(UserMixin):
@@ -42,22 +39,20 @@ def load_user(user_id):
     conn.close()
     if user_data:
         user = User()
-        user.id = user_data[1]  # Используем username в качестве идентификатора пользователя
+        user.id = user_data[1]
         return user
     return None
 
 @app.route('/')
 def index():
-    # Получаем значения параметров из запроса
     page = request.args.get('page', default=1, type=int)
     sort = request.args.get('sort', default='by-relevance')
     sizeValue = request.args.get('size', default='')
     brands = request.args.get('brands', default='')
-    # Получаем данные из API
     api_url = f'http://127.0.0.1:56789/api/products?size={sizeValue}&brands={brands}&sort={sort}&page={page}'
     response = requests.get(api_url)
     if response.status_code == 200:
-        products = response.json()  # Преобразуем JSON-ответ в объект Python
+        products = response.json()
         return render_template('index.html', products=products)
     else:
         return 'Failed to load products from API'
@@ -74,7 +69,7 @@ def login():
         user_data = cursor.fetchone()
 
         if user_data and check_password(user_data[2], password):
-            user = load_user(username) # Загружаем пользователя через load_user
+            user = load_user(username)
             login_user(user)
             conn.close()
             return redirect(url_for('index'))
@@ -124,6 +119,20 @@ def profile():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/product/<path:product_name>')
+def product_page(product_name):
+    sku = request.args.get('sku')
+    api_url = f'http://127.0.0.1:56789/api/product/{product_name}'
+    if sku:
+        api_url += f'?sku={sku}'
+    
+    response = requests.get(api_url)
+    if response.status_code == 200:
+        product_data = response.json()
+        return render_template('product.html', product=product_data)
+    else:
+        return 'Failed to load product from API', 500
 
 if __name__ == '__main__':
     app.run(debug=True)
