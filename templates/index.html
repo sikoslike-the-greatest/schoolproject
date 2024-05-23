@@ -8,21 +8,20 @@
 </head>
 <body>
     <header>
-        {% if not current_user.is_authenticated %}
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('login') }}">Login</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-            </ul>
-        </nav>
-        {% else %}
-        <p>Welcome, {{ current_user.get_id() }}!</p>
-        <form action="{{ url_for('logout') }}" method="get">
-            <button type="submit">Logout</button>
-        </form>
-        {% endif %}
-    </header>
-
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-link">Главная</a>
+            {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                <a href="{{ url_for('register') }}" class="nav-link">Register</a>
+            {% else %}
+                <a href="{{ url_for('profile') }}" class="nav-link">Корзина</a>
+                <span class="welcome-message">Welcome, {{ current_user.get_id() }}!</span>
+                <form action="{{ url_for('logout') }}" method="get" class="logout-form">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            {% endif %}
+        </div>
+    </header>    
     <div class="container">
         <div class="filters">
             <div class="filter" id="size-filter">

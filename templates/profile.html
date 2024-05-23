@@ -3,10 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
 </head>
 <body>
-    <h1>Hello, {{ username }}</h1>
-    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+    <header>
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-link">Главная</a>
+            {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                <a href="{{ url_for('register') }}" class="nav-link">Register</a>
+            {% else %}
+                <a href="{{ url_for('profile') }}" class="nav-link">Корзина</a>
+                <span class="welcome-message">Welcome, {{ current_user.get_id() }}!</span>
+                <form action="{{ url_for('logout') }}" method="get" class="logout-form">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            {% endif %}
+        </div>
+    </header>
+
+    <h1>Your Cart</h1>
+    <div class="cart-items">
+        {% for item in cart %}
+        <div class="cart-item">
+            <p>{{ item.product_name }} - Size: {{ item.size }} - Price: {{ item.price }}RUB</p>
+            <form action="{{ url_for('remove_from_cart') }}" method="post">
+                <input type="hidden" name="product_name" value="{{ item.product_name }}">
+                <input type="hidden" name="size" value="{{ item.size }}">
+                <button type="submit">Remove from Cart</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+    <p class="total_price">Total Price: {{ total_price }}RUB</p>
 </body>
 </html>

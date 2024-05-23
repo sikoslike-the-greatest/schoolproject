@@ -7,8 +7,19 @@
 </head>
 <body>
     <header>
-        <a href="/">Главная</a>
-        <a href="/profile">Корзина</a>
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-link">Главная</a>
+            {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                <a href="{{ url_for('register') }}" class="nav-link">Register</a>
+            {% else %}
+                <a href="{{ url_for('profile') }}" class="nav-link">Корзина</a>
+                <span class="welcome-message">Welcome, {{ current_user.get_id() }}!</span>
+                <form action="{{ url_for('logout') }}" method="get" class="logout-form">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            {% endif %}
+        </div>
     </header>
     <h1>{{ product.product_name }}</h1>
     <div class="product-images">
@@ -23,16 +34,21 @@
         <button class="next" onclick="moveSlider(1)">&#10095;</button>
     </div>
     <div class="product-price">
-        <p>Price: {{ product.price }}</p>
-        <button onclick="addToCart('{{ product.product_name }}')">Add to Cart</button>
+        <p>Price: {{ product.price }} RUB</p>
+        <form id="add-to-cart-form" action="{{ url_for('add_to_cart') }}" method="post">
+            <input type="hidden" name="product_name" value="{{ product.product_name }}">
+            <input type="hidden" name="size" id="selected-size" value="{{ request.args.get('cursize') }}">
+            <input type="hidden" name="price" value="{{ product.price }}">
+            <button type="submit">Add to Cart</button>
+        </form>
     </div>
     <div class="product-properties">
         <ul>
-            {% for key, value in product.properties.items() %}
+            {% for size, sku in product.properties.items() %}
                 <li>
                     <button 
-                        class="size-button {{ 'selected' if value == request.args.get('sku') else '' }}" 
-                        onclick="redirectToSize('{{ value }}')">{{ key }}</button>
+                        class="size-button {{ 'selected' if sku == request.args.get('sku') else '' }}" 
+                        onclick="selectSize('{{ size }}', '{{ sku }}')">{{ size }}</button>
                 </li>
             {% endfor %}
         </ul>
@@ -40,7 +56,8 @@
 
     <script>
         let currentIndex = 0;
-        let selectedSize = '{{ request.args.get("sku", "") }}';
+        let selectedSku = '{{ request.args.get("sku", "") }}';
+        let selectedSize = '{{ request.args.get("cursize", "") }}';
 
         function moveSlider(direction) {
             const slider = document.querySelector('.slider-container');
@@ -59,19 +76,22 @@
             slider.style.transform = `translateX(${offset}%)`;
         }
 
-        function addToCart(productName) {
-            if (!selectedSize) {
-                alert('Please select a size before adding to cart!');
-                return;
-            }
-            alert(`Added ${productName} (Size: ${selectedSize}) to cart!`);
-        }
-
-        function redirectToSize(sku) {
+        function selectSize(size, sku) {
+            selectedSku = sku;
+            selectedSize = size;
+            document.getElementById('selected-size').value = size;
             const url = new URL(window.location.href);
             url.searchParams.set('sku', sku);
+            url.searchParams.set('cursize', size);
             window.location.href = url.toString();
         }
+
+        document.getElementById('add-to-cart-form').addEventListener('submit', function(event) {
+            if (!selectedSize) {
+                event.preventDefault();
+                alert('Please select a size before adding to cart!');
+            }
+        });
     </script>
 </body>
 </html>

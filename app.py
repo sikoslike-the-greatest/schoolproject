@@ -3,6 +3,7 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 import sqlite3
 import hashlib
 import requests
+import json
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'your_secret_key'
@@ -112,7 +113,15 @@ def register():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', username=current_user.id)
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT cart FROM users WHERE username = ?', (current_user.get_id(),))
+    cart_json = cursor.fetchone()[0]
+    cart = json.loads(cart_json) if cart_json else []
+
+    total_price = sum(int(item['price']) for item in cart)
+    
+    return render_template('profile.html', username=current_user.get_id(), cart=cart, total_price=total_price)
 
 @app.route('/logout')
 @login_required
@@ -133,6 +142,56 @@ def product_page(product_name):
         return render_template('product.html', product=product_data)
     else:
         return 'Failed to load product from API', 500
+
+@app.route('/add_to_cart', methods=['POST'])
+def add_to_cart():
+    if current_user.is_authenticated:
+        size = request.form.get('size')
+        product_name = request.form.get('product_name')
+        price = request.form.get('price')
+
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT cart FROM users WHERE username = ?', (current_user.get_id(),))
+        cart_json = cursor.fetchone()[0]
+        cart = json.loads(cart_json) if cart_json else []
+
+        cart.append({'product_name': product_name, 'size': size, 'price': price})
+
+        cursor.execute('UPDATE users SET cart = ? WHERE username = ?', (json.dumps(cart), current_user.get_id()))
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('profile'))
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route('/remove_from_cart', methods=['POST'])
+def remove_from_cart():
+    if current_user.is_authenticated:
+        size = request.form.get('size')
+        product_name = request.form.get('product_name')
+
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT cart FROM users WHERE username = ?', (current_user.get_id(),))
+        cart_json = cursor.fetchone()[0]
+        cart = json.loads(cart_json) if cart_json else []
+
+        # Удаляем товар из корзины
+        for item in cart:
+            if item['product_name'] == product_name and item['size'] == size:
+                cart.remove(item)
+                break
+
+        cursor.execute('UPDATE users SET cart = ? WHERE username = ?', (json.dumps(cart), current_user.get_id()))
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('profile'))
+    else:
+        return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
