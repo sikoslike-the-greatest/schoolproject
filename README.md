@@ -7,5 +7,7 @@ enjoy i guess
 
 to run:
 pip install -r requirements.txt
+
 python3 myapi.py
+
 python3 app.py
