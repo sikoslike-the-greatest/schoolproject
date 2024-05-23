@@ -25,11 +25,38 @@
     <div class="container">
         <div class="filters">
             <div class="filter" id="size-filter">
-                <h3>Size:</h3>
+                <h3>Size(eu):</h3>
                 <select name="size" onchange="applyFilter('size', this.value)">
                     <option value="">All</option>
+                    <option value="36" {% if '36' in request.args.getlist('size') %} selected {% endif %}>36</option>
+                    <option value="36.5" {% if '36.5' in request.args.getlist('size') %} selected {% endif %}>36.5</option>
+                    <option value="37" {% if '37' in request.args.getlist('size') %} selected {% endif %}>37</option>
+                    <option value="37.5" {% if '37.5' in request.args.getlist('size') %} selected {% endif %}>37.5</option>
+                    <option value="38" {% if '38' in request.args.getlist('size') %} selected {% endif %}>38</option>
+                    <option value="38.5" {% if '38.5' in request.args.getlist('size') %} selected {% endif %}>38.5</option>
+                    <option value="39" {% if '39' in request.args.getlist('size') %} selected {% endif %}>39</option>
+                    <option value="40" {% if '40' in request.args.getlist('size') %} selected {% endif %}>40</option>
+                    <option value="40.5" {% if '40.5' in request.args.getlist('size') %} selected {% endif %}>40.5</option>
+                    <option value="41" {% if '41' in request.args.getlist('size') %} selected {% endif %}>41</option>
+                    <option value="42" {% if '42' in request.args.getlist('size') %} selected {% endif %}>42</option>
+                    <option value="42.5" {% if '42.5' in request.args.getlist('size') %} selected {% endif %}>42.5</option>
                     <option value="43" {% if '43' in request.args.getlist('size') %} selected {% endif %}>43</option>
                     <option value="44" {% if '44' in request.args.getlist('size') %} selected {% endif %}>44</option>
+                    <option value="44.5" {% if '44.5' in request.args.getlist('size') %} selected {% endif %}>44.5</option>
+                    <option value="45" {% if '45' in request.args.getlist('size') %} selected {% endif %}>45</option>
+                    <option value="45.5" {% if '45.5' in request.args.getlist('size') %} selected {% endif %}>45.5</option>
+                    <option value="46" {% if '46' in request.args.getlist('size') %} selected {% endif %}>46</option>
+                    <option value="47" {% if '47' in request.args.getlist('size') %} selected {% endif %}>47</option>
+                    <option value="47.5" {% if '47.5' in request.args.getlist('size') %} selected {% endif %}>47.5</option>
+                    <option value="48" {% if '48' in request.args.getlist('size') %} selected {% endif %}>48</option>
+                    <option value="48.5" {% if '48.5' in request.args.getlist('size') %} selected {% endif %}>48.5</option>
+                    <option value="49" {% if '49' in request.args.getlist('size') %} selected {% endif %}>49</option>
+                    <option value="49.5" {% if '49.5' in request.args.getlist('size') %} selected {% endif %}>49.5</option>
+                    <option value="50" {% if '50' in request.args.getlist('size') %} selected {% endif %}>50</option>
+                    <option value="50.5" {% if '50.5' in request.args.getlist('size') %} selected {% endif %}>50.5</option>
+                    <option value="51" {% if '51' in request.args.getlist('size') %} selected {% endif %}>51</option>
+                    <option value="51.5" {% if '51.5' in request.args.getlist('size') %} selected {% endif %}>51.5</option>
+                    <option value="52.5" {% if '52.5' in request.args.getlist('size') %} selected {% endif %}>52.5</option>
                     <!-- Добавьте другие размеры -->
                 </select>
             </div>
@@ -39,6 +66,25 @@
                     <option value="">All</option>
                     <option value="Nike" {% if 'Nike' in request.args.getlist('brands') %} selected {% endif %}>Nike</option>
                     <option value="Jordan" {% if 'Jordan' in request.args.getlist('brands') %} selected {% endif %}>Jordan</option>
+                    <option value="New Balance" {% if 'New Balance' in request.args.getlist('brands') %} selected {% endif %}>New Balance</option>
+                    <option value="adidas originals" {% if 'adidas originals' in request.args.getlist('brands') %} selected {% endif %}>Adidas originals</option>
+                    <option value="Asics" {% if 'Asics' in request.args.getlist('brands') %} selected {% endif %}>Asics</option>
+                    <option value="Converse" {% if 'Converse' in request.args.getlist('brands') %} selected {% endif %}>Converse</option>
+                    <option value="Reebok" {% if 'Reebok' in request.args.getlist('brands') %} selected {% endif %}>Reebok</option>
+                    <option value="Balenciaga" {% if 'Balenciaga' in request.args.getlist('brands') %} selected {% endif %}>Balenciaga</option>
+                    <option value="Burberry" {% if 'Burberry' in request.args.getlist('brands') %} selected {% endif %}>Burberry</option>
+                    <option value="Crocs" {% if 'Crocs' in request.args.getlist('brands') %} selected {% endif %}>Crocs</option>
+                    <option value="FILA" {% if 'FILA' in request.args.getlist('brands') %} selected {% endif %}>FILA</option>
+                    <option value="FILA FUSION" {% if 'FILA FUSION' in request.args.getlist('brands') %} selected {% endif %}>FILA FUSION</option>
+                    <option value="OFF-WHITE" {% if 'OFF-WHITE' in request.args.getlist('brands') %} selected {% endif %}>OFF-WHITE</option>
+                    <option value="PRADA" {% if 'PRADA' in request.args.getlist('brands') %} selected {% endif %}>PRADA</option>
+                    <option value="PUMA" {% if 'PUMA' in request.args.getlist('brands') %} selected {% endif %}>PUMA</option>
+                    <option value="UGG" {% if 'UGG' in request.args.getlist('brands') %} selected {% endif %}>UGG</option>
+                    <option value="Under Armour" {% if 'Under Armour' in request.args.getlist('brands') %} selected {% endif %}>Under Armour</option>
+                    <option value="Vans" {% if 'Vans' in request.args.getlist('brands') %} selected {% endif %}>Vans</option>
+                    <option value="adidas" {% if 'adidas' in request.args.getlist('brands') %} selected {% endif %}>Adidas</option>
+                    <option value="adidas neo" {% if 'adidas neo' in request.args.getlist('brands') %} selected {% endif %}>Adidas neo</option>
+                    <option value="Timberland" {% if 'Timberland' in request.args.getlist('brands') %} selected {% endif %}>Timberland</option>
                     <!-- Добавьте другие бренды -->
                 </select>
             </div>
